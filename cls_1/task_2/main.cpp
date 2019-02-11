@@ -62,10 +62,11 @@ void test_get_planned_events() {
     Event ev4("discuss4", 12, 45000, 3600);
     schedule.TryAdd(ev4);
 
-    auto plannedEventIt = schedule.GetPlannedEvents(45000);
+    auto plannedEventsRange = schedule.GetPlannedEvents(45000);
     std::vector<Events> expectedPlannedEvents(ev4, ev2, ev);
 
-    assert(std::equal(expectedPlannedEvents.cbegin(), expectedPlannedEvents.cend(), plannedEventIt));
+    assert(std::equal(expectedPlannedEvents.cbegin(), expectedPlannedEvents.cend(),
+                      plannedEventsRange.first, plannedEventsRange.second));
 }
 
 
