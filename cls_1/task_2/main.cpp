@@ -47,6 +47,7 @@ void test_different_rooms() {
     assert(schedule.TryAdd(ev2));
 }
 
+
 void test_get_planned_events() {
     DaySchedule schedule({42, 12, 24});
 

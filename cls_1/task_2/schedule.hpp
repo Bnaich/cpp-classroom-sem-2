@@ -2,8 +2,12 @@
 #include <set>
 
 
+using RoomType = uint16_t;
+using TimeType = uint32_t;
+
+
 class Event {
-    Event(std::string name, uint8_t room_number, uint8_t start_time, uint8_t duration);
+    Event(std::string name, RoomType room_number, TimeType start_time, TimeType duration);
 
     bool operator==(const Event& other);
 
@@ -11,9 +15,9 @@ class Event {
 
 public:
     std::string name_;
-    uint8_t room_number_;
-    uint8_t start_time_;
-    uint8_t duration_;
+    RoomType room_number_;
+    TimeType start_time_;
+    TimeType duration_;
 };
 
 
@@ -22,12 +26,12 @@ public:
     class PlannedEventsIt;
 
 public:
-    explicit DaySchedule(std::set<uint8_t> rooms);
+    explicit DaySchedule(std::set<RoomType> rooms);
 
     // throws on incorrect event
     bool TryAdd(const Event& event);
 
-    std::pair<PlannedEventsIt, PlannedEventsIt> GetPlannedEvents(uint8_t time);  // sorted by room numbers
+    std::pair<PlannedEventsIt, PlannedEventsIt> GetPlannedEvents(TimeType time);  // sorted by room numbers
 
     // ...
 };
