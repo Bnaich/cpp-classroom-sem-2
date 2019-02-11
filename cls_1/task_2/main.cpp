@@ -74,6 +74,7 @@ int main() {
     test_correct_planning();
     test_no_free_rooms();
     test_different_rooms();
+    test_get_planned_events();
 
     return 0;
 }
